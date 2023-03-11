@@ -226,7 +226,7 @@
 
 
 <!-- Portfolio Start -->
-<!-- <div class="container-fluid pt-5 pb-3" id="portfolio">
+ <div class="container-fluid pt-5 pb-3" id="portfolio">
     <div class="container">
         <div class="position-relative d-flex align-items-center justify-content-center">
             <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Gallery</h1>
@@ -248,7 +248,7 @@
                     <img class="img-fluid rounded w-100" src="img/portfolio-1.jpg" alt="">
                     <div class="portfolio-btn bg-info d-flex align-items-center justify-content-center">
                         <a href="img/portfolio-1.jpg" data-lightbox="portfolio">
-                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                            <a href="#" class="text-white" style="font-size: 30px;">View Details</a>
                         </a>
                     </div>
                 </div>
@@ -305,7 +305,7 @@
             </div>
         </div>
     </div>
-</div> -->
+</div>
 <!-- Portfolio End -->
 
 
@@ -350,7 +350,7 @@
 
 
 <!-- Contact Start -->
-<div class="container-fluid py-5" id="contact">
+<div class="container-fluid py-5 " id="contact">
     <div class="container">
         <div class="position-relative d-flex align-items-center justify-content-center">
             <h1 class="display-1 text-uppercase text-white mobileVT" style="-webkit-text-stroke: 1px #dee2e6;">Contact</h1>
