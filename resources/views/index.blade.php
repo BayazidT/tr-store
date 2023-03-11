@@ -88,17 +88,17 @@
                 <img class="img-fluid rounded w-100" src="img/bayazid.jpg" alt="">
             </div>
             <div class="col-lg-7">
-                <h3 class="mb-4">Web Designer & Web Developer</h3>
-                <p>Transforming imagination into real is really awesome. My job is to transform imagination into reality by creative design and efficient code. So, if you have an idea and you wants to emplement it in real life you can hire me.  </p>
+                <h3 class="mb-4">{{ $profile_about->title }}</h3>
+                <p>{{ $profile_about->description }}</p>
                 <div class="row mb-3">
-                    <div class="col-sm-6 py-2"><h6>Name: <span class="text-secondary">Bayazid Talukder</span></h6></div>
-                    <div class="col-sm-6 py-2"><h6>Birthday: <span class="text-secondary">19 June 1995</span></h6></div>
-                    <div class="col-sm-6 py-2"><h6>Degree: <span class="text-secondary">BSc in CSE</span></h6></div>
-                    <div class="col-sm-6 py-2"><h6>Experience: <span class="text-secondary">1 Years</span></h6></div>
-                    <div class="col-sm-6 py-2"><h6>Phone: <span class="text-secondary">+88 01772-242616</span></h6></div>
-                    <div class="col-sm-6 py-2"><h6>Email: <span class="text-secondary">btnirob@gmail.com</span></h6></div>
-                    <div class="col-sm-6 py-2"><h6>Address: <span class="text-secondary">Sector#18, Uttara, Dhaka-1230</span></h6></div>
-                    <div class="col-sm-6 py-2"><h6>Freelance: <span class="text-secondary">Available</span></h6></div>
+                    <div class="col-sm-6 py-2"><h6>Name: <span class="text-secondary">{{ $profile_about->name }}</span></h6></div>
+                    {{--                    <div class="col-sm-6 py-2"><h6>Birthday: <span class="text-secondary">19 June 1995</span></h6></div>--}}
+                    <div class="col-sm-6 py-2"><h6>Degree: <span class="text-secondary">{{ $profile_about->degree }}</span></h6></div>
+                    <div class="col-sm-6 py-2"><h6>Experience: <span class="text-secondary">{{ $profile_about->experience }}</span></h6></div>
+                    <div class="col-sm-6 py-2"><h6>Phone: <span class="text-secondary">{{ $profile_about->phone }}</span></h6></div>
+                    <div class="col-sm-6 py-2"><h6>Email: <span class="text-secondary">{{ $profile_about->email }}</span></h6></div>
+                    <div class="col-sm-6 py-2"><h6>Address: <span class="text-secondary">{{ $profile_about->address }}</span></h6></div>
+                    <div class="col-sm-6 py-2"><h6>Work Mode: <span class="text-secondary">{{ $profile_about->work_mode }}</span></h6></div>
                 </div>
                 <a href="" class="btn blue btn-outline-info mr-4">Hire Me</a>
                 <a href="" class="btn btn-outline-info">Learn More</a>
@@ -119,41 +119,27 @@
             <div class="col-lg-6">
                 <h3 class="mb-4">My Education</h3>
                 <div class="border-left border-info pt-2 pl-4 ml-2">
+                    @foreach($education_info as $key => $education)
                     <div class="position-relative ex-me mb-4">
                         <i class="far fa-dot-circle text-info position-absolute" style="top: 2px; left: -35px; font-size: 22px;"></i>
-                        <h5 class="font-weight-bold mb-1">Bachelor of Science<span> in CSE</span></h5>
-                        <p class="mb-2"><strong>North South University</strong> | <small>2017 - 2021</small></p>
+                        <h5 class="font-weight-bold mb-1">{{ $education->degree_title }}</h5>
+                        <p class="mb-2"><strong>{{$education->institute_name}}</strong> | <small>2017 - 2021</small></p>
 
                     </div>
-                    <div class="position-relative ex-me mb-4">
-                        <i class="far fa-dot-circle text-info position-absolute" style="top: 2px; left: -35px;  font-size: 22px;"></i>
-                        <h5 class="font-weight-bold mb-1">HSC</h5>
-                        <p class="mb-2"><strong>Milestone College</strong> | <small>2015</small></p>
-
-                    </div>
-                    <div class="position-relative ex-me mb-4">
-                        <i class="far fa-dot-circle text-info position-absolute" style="top: 2px; left: -35px;  font-size: 22px;"></i>
-                        <h5 class="font-weight-bold mb-1">SSC</h5>
-                        <p class="mb-2"><strong>Kamaura Sheed Smreeti High School</strong> | <small>2013</small></p>
-
-                    </div>
+                    @endforeach
                 </div>
             </div>
             <div class="col-lg-6">
                 <h3 class="mb-4">My Expericence</h3>
                 <div class="border-left border-info pt-2 pl-4 ml-2">
+                    @foreach($experience_info as $key=>$experience)
                     <div class="position-relative ex-me mb-4">
                         <i class="far fa-dot-circle text-info position-absolute" style="top: 2px;left: -35px;  font-size: 22px;"></i>
-                        <h5 class="font-weight-bold mb-1">Web Developer</h5>
-                        <p class="mb-2"><strong>Personal</strong> | <small> Excellent</small></p>
-                        <p>I have 1 year of web development expericence</p>
+                        <h5 class="font-weight-bold mb-1">{{ $experience->job_title }}</h5>
+                        <p class="mb-2"><strong>{{ $experience->company_name }}</strong> | <small> Excellent</small></p>
+                        <p>{{ $experience->job_description }}</p>
                     </div>
-                    <div class="position-relative ex-me mb-4">
-                        <i class="far fa-dot-circle text-info position-absolute" style="top: 2px;left: -35px;  font-size: 22px;"></i>
-                        <h5 class="font-weight-bold mb-1">Network Engineer</h5>
-                        <p class="mb-2"><strong>ISP Company</strong> | <small> Good</small></p>
-                        <p>Currently, I am working in ISA company as Network Engineer</p>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -169,62 +155,31 @@
         </div>
         <div class="row align-items-center">
             <div class="col-md-6">
-                <div class="skill mb-4">
-                    <div class="d-flex justify-content-between">
-                        <h6 class="font-weight-bold">HTML</h6>
-                        <h6 class="font-weight-bold">95%</h6>
+                @foreach($skill_info->take(3) as $key => $skill)
+                    <div class="skill mb-4">
+                        <div class="d-flex justify-content-between">
+                            <h6 class="font-weight-bold">{{ $skill->skill_title }}</h6>
+                            <h6 class="font-weight-bold">{{ $skill->expertise_level }}%</h6>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar {{ $skill->background_color }}" role="progressbar" aria-valuenow="{{ $skill->expertise_level }}" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
                     </div>
-                    <div class="progress">
-                        <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </div>
-                <div class="skill mb-4">
-                    <div class="d-flex justify-content-between">
-                        <h6 class="font-weight-bold">CSS</h6>
-                        <h6 class="font-weight-bold">85%</h6>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </div>
-                <div class="skill mb-4">
-                    <div class="d-flex justify-content-between">
-                        <h6 class="font-weight-bold">PHP</h6>
-                        <h6 class="font-weight-bold">80%</h6>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="col-md-6">
-                <div class="skill mb-4">
-                    <div class="d-flex justify-content-between">
-                        <h6 class="font-weight-bold">Javascript</h6>
-                        <h6 class="font-weight-bold">60%</h6>
+                @foreach($skill_info->slice(3,3) as $key => $skill)
+                    <div class="skill mb-4">
+                        <div class="d-flex justify-content-between">
+                            <h6 class="font-weight-bold">{{ $skill->skill_title }}</h6>
+                            <h6 class="font-weight-bold">{{ $skill->expertise_level }}%</h6>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar {{ $skill->background_color }}" role="progressbar" aria-valuenow="{{ $skill->expertise_level }}" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
                     </div>
-                    <div class="progress">
-                        <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </div>
-                <div class="skill mb-4">
-                    <div class="d-flex justify-content-between">
-                        <h6 class="font-weight-bold">React JS</h6>
-                        <h6 class="font-weight-bold">65%</h6>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </div>
-                <div class="skill mb-4">
-                    <div class="d-flex justify-content-between">
-                        <h6 class="font-weight-bold">Laravel</h6>
-                        <h6 class="font-weight-bold">75%</h6>
-                    </div>
-                    <div class="progress">
-                        <div class="progress-bar bg-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </div>
+                @endforeach
+
             </div>
         </div>
     </div>

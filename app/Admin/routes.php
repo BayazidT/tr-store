@@ -12,5 +12,10 @@ Route::group([
 ], function (Router $router) {
 
     $router->get('/', 'HomeController@index')->name('home');
+    $router->resource('/profile_about', 'Portfolio\ProfileAboutController');
+    $router->resource('/education_info', 'Portfolio\EducationInfoController');
+    $router->resource('/experience_info', 'Portfolio\ExperienceInfoController');
+    $router->resource('/skill_info', 'Portfolio\SkillInfoController');
+
 
 });
