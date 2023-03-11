@@ -236,9 +236,11 @@
             <div class="col-12 text-center mb-2">
                 <ul class="list-inline mb-4" id="portfolio-flters">
                     <li class="btn btn-sm btn-outline-info m-1 active"  data-filter="">All</li>
-                    <li class="btn btn-sm btn-outline-info m-1" data-filter=".first">Design</li>
-                    <li class="btn btn-sm btn-outline-info m-1" data-filter=".second">Development</li>
-                    <li class="btn btn-sm btn-outline-info m-1" data-filter=".third">Marketing</li>
+                    @foreach($project_category as $key =>$category)
+                    <li class="btn btn-sm btn-outline-info m-1" data-filter=".first">{{$category->category_name}}</li>
+                    @endforeach
+{{--                    <li class="btn btn-sm btn-outline-info m-1" data-filter=".second">Development</li>--}}
+{{--                    <li class="btn btn-sm btn-outline-info m-1" data-filter=".third">Marketing</li>--}}
                 </ul>
             </div>
         </div>
