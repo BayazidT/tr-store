@@ -25,6 +25,13 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-
+     alpha/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="51">
@@ -82,27 +89,60 @@
         <div class="position-relative d-flex align-items-center justify-content-center">
             <h1 class="display-1 text-uppercase text-white mobileVT" style="-webkit-text-stroke: 1px #dee2e6;">About</h1>
             <h1 class="position-absolute text-uppercase text-info mobileVP">About Me</h1>
+
         </div>
         <div class="row align-items-center">
             <div class="col-lg-5 pb-4 pb-lg-0">
                 <img class="img-fluid rounded w-100" src="img/bayazid.jpg" alt="">
             </div>
+{{--            <div id="mydivoff" class="col-lg-7">--}}
+{{--                <div class="d-flex">--}}
+{{--                    <h3 class="mb-4">{{ $profile_about->title }} </h3>--}}
+{{--                    <i id="about_edit" class="fa fa-sm fa-edit text-black m-2 pull-right"></i>--}}
+{{--                </div>--}}
+
+{{--                <p>{{ $profile_about->description }}</p>--}}
+{{--                <div class="row mb-3">--}}
+{{--                    <div class="col-sm-6 py-2"><h6>Name: <span class="text-secondary">{{ $profile_about->name }}</span></h6></div>--}}
+{{--                    --}}{{--                    <div class="col-sm-6 py-2"><h6>Birthday: <span class="text-secondary">19 June 1995</span></h6></div>--}}
+{{--                    <div class="col-sm-6 py-2"><h6>Degree: <span class="text-secondary">{{ $profile_about->degree }}</span></h6></div>--}}
+{{--                    <div class="col-sm-6 py-2"><h6>Experience: <span class="text-secondary">{{ $profile_about->experience }}</span></h6></div>--}}
+{{--                    <div class="col-sm-6 py-2"><h6>Phone: <span class="text-secondary">{{ $profile_about->phone }}</span></h6></div>--}}
+{{--                    <div class="col-sm-6 py-2"><h6>Email: <span class="text-secondary">{{ $profile_about->email }}</span></h6></div>--}}
+{{--                    <div class="col-sm-6 py-2"><h6>Address: <span class="text-secondary">{{ $profile_about->address }}</span></h6></div>--}}
+{{--                    <div class="col-sm-6 py-2"><h6>Work Mode: <span class="text-secondary">{{ $profile_about->work_mode }}</span></h6></div>--}}
+{{--                </div>--}}
+{{--                <a href="" class="btn blue btn-outline-info mr-4">Hire Me</a>--}}
+{{--                <a href="" class="btn btn-outline-info">Learn More</a>--}}
+{{--            </div>--}}
             <div class="col-lg-7">
-                <h3 class="mb-4">{{ $profile_about->title }}</h3>
-                <p>{{ $profile_about->description }}</p>
-                <div class="row mb-3">
-                    <div class="col-sm-6 py-2"><h6>Name: <span class="text-secondary">{{ $profile_about->name }}</span></h6></div>
-                    {{--                    <div class="col-sm-6 py-2"><h6>Birthday: <span class="text-secondary">19 June 1995</span></h6></div>--}}
-                    <div class="col-sm-6 py-2"><h6>Degree: <span class="text-secondary">{{ $profile_about->degree }}</span></h6></div>
-                    <div class="col-sm-6 py-2"><h6>Experience: <span class="text-secondary">{{ $profile_about->experience }}</span></h6></div>
-                    <div class="col-sm-6 py-2"><h6>Phone: <span class="text-secondary">{{ $profile_about->phone }}</span></h6></div>
-                    <div class="col-sm-6 py-2"><h6>Email: <span class="text-secondary">{{ $profile_about->email }}</span></h6></div>
-                    <div class="col-sm-6 py-2"><h6>Address: <span class="text-secondary">{{ $profile_about->address }}</span></h6></div>
-                    <div class="col-sm-6 py-2"><h6>Work Mode: <span class="text-secondary">{{ $profile_about->work_mode }}</span></h6></div>
+
+                <form method="post" action="{{route('about-update')}}">
+                    @csrf
+                    @method('PATCH')
+                    <input type="hidden" name="profile_id" value="{{$profile_about->profile_id}}" />
+
+                <div class="d-flex">
+                    <h3 class="mb-4 w-100"><input class="w-100" type="text" name="title" value="{{$profile_about->title}}" /> </h3>
+                    <a href="javascript:;" onmousedown="toggleDiv('mydiv');"><i id="about_edit" class="fa fa-sm fa-edit text-black m-2 pull-right"></i></a>
                 </div>
-                <a href="" class="btn blue btn-outline-info mr-4">Hire Me</a>
-                <a href="" class="btn btn-outline-info">Learn More</a>
+
+                <p><textarea type="text" class="w-100" style="height: 120px" name="description">{{ $profile_about->description }}</textarea></p>
+                <div class="row mb-3" id="mydivon">
+                    <div class="col-sm-6 py-2"><h6>Name: <span class="text-secondary"><input type="text" name="name" value="{{ $profile_about->name }}" /></span></h6></div>
+                    {{--                    <div class="col-sm-6 py-2"><h6>Birthday: <span class="text-secondary">19 June 1995</span></h6></div>--}}
+                    <div class="col-sm-6 py-2"><h6>Degree: <span class="text-secondary"><input type="text" name="degree" value="{{ $profile_about->degree }}" /></span></h6></div>
+                    <div class="col-sm-6 py-2"><h6>Experience: <span class="text-secondary"><input type="text" name="experience" value="{{ $profile_about->experience }}" /></span></h6></div>
+                    <div class="col-sm-6 py-2"><h6>Phone: <span class="text-secondary"><input type="text" name="phone" value="{{ $profile_about->phone }}" /></span></h6></div>
+                    <div class="col-sm-6 py-2"><h6>Email: <span class="text-secondary"><input type="text" name="email" value="{{ $profile_about->email }}" /></span></h6></div>
+                    <div class="col-sm-6 py-2"><h6>Address: <span class="text-secondary"><input type="text" name="address" value="{{ $profile_about->address }}" /></span></h6></div>
+                    <div class="col-sm-6 py-2"><h6>Work Mode: <span class="text-secondary"><input type="text" name="work_mode" value="{{ $profile_about->work_mode }}" /></span></h6></div>
+                </div>
+                <button  class="btn btn-info mr-2">Save</button>
+
+                </form>
             </div>
+{{--            Edit section ends--}}
         </div>
     </div>
 </div>
@@ -116,30 +156,47 @@
             <h1 class="position-absolute text-uppercase text-info mobileVP">Education & Expericence</h1>
         </div>
         <div class="row align-items-center">
+{{--            <div class="col-lg-6">--}}
+{{--                <h3 class="mb-4">My Education</h3>--}}
+{{--                <div class="border-left border-info pt-2 pl-4 ml-2">--}}
+{{--                    @foreach($education_info as $key => $education)--}}
+{{--                    <div class="position-relative ex-me mb-4">--}}
+{{--                        <i class="far fa-dot-circle text-info position-absolute" style="top: 2px; left: -35px; font-size: 22px;"></i>--}}
+{{--                        <h5 class="font-weight-bold mb-1">{{ $education->degree_title }}</h5>--}}
+{{--                        <p class="mb-2"><strong>{{$education->institute_name}}</strong> | <small>2017 - 2021</small></p>--}}
+
+{{--                    </div>--}}
+{{--                    @endforeach--}}
+{{--                </div>--}}
+{{--            </div>--}}
+
             <div class="col-lg-6">
                 <h3 class="mb-4">My Education</h3>
                 <div class="border-left border-info pt-2 pl-4 ml-2">
                     @foreach($education_info as $key => $education)
-                    <div class="position-relative ex-me mb-4">
-                        <i class="far fa-dot-circle text-info position-absolute" style="top: 2px; left: -35px; font-size: 22px;"></i>
-                        <h5 class="font-weight-bold mb-1">{{ $education->degree_title }}</h5>
-                        <p class="mb-2"><strong>{{$education->institute_name}}</strong> | <small>2017 - 2021</small></p>
+                        <div class="position-relative ex-me mb-4">
+                            <i class="far fa-dot-circle text-info position-absolute" style="top: 2px; left: -35px; font-size: 22px;"></i>
+                            <h5 class="font-weight-bold mb-1">{{ $education->degree_title }}</h5>
+                            <p class="mb-2"><strong>{{$education->institute_name}}</strong> | <small>2017 - 2021</small></p>
 
-                    </div>
+                        </div>
                     @endforeach
                 </div>
             </div>
+
             <div class="col-lg-6">
                 <h3 class="mb-4">My Expericence</h3>
                 <div class="border-left border-info pt-2 pl-4 ml-2">
+                    <form>
                     @foreach($experience_info as $key=>$experience)
                     <div class="position-relative ex-me mb-4">
                         <i class="far fa-dot-circle text-info position-absolute" style="top: 2px;left: -35px;  font-size: 22px;"></i>
-                        <h5 class="font-weight-bold mb-1">{{ $experience->job_title }}</h5>
-                        <p class="mb-2"><strong>{{ $experience->company_name }}</strong> | <small> Excellent</small></p>
-                        <p>{{ $experience->job_description }}</p>
+                        <h5 class="font-weight-bold mb-1"><input type="text" name="title_{{ $experience->id }}" value="{{ $experience->job_title }}" /></h5>
+                        <p class="mb-2"><strong><input type="text" name="company_{{ $experience->id }}" value="{{ $experience->company_name }}"/> </strong> | <small> Excellent</small></p>
+                        <p><input type="text" name="description_{{ $experience->id }}" value="{{ $experience->job_description }}"/> </p>
                     </div>
                     @endforeach
+                    </form>
                 </div>
             </div>
         </div>
@@ -250,7 +307,7 @@
                     <img class="img-fluid rounded w-100" src="img/portfolio-1.jpg" alt="">
                     <div class="portfolio-btn bg-info d-flex align-items-center justify-content-center">
                         <a href="img/portfolio-1.jpg" data-lightbox="portfolio">
-                            <a href="#" class="text-white" style="font-size: 30px;">View Details</a>
+                            <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
                         </a>
                     </div>
                 </div>
@@ -447,6 +504,37 @@
 
 <!-- Template Javascript -->
 <script src="js/main.js"></script>
+<script>
+    @if(Session::has('msg'))
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+    toastr.success("{{ session('msg') }}");
+    @endif
+
+
+
+    function toggleDiv(divid)
+    {
+
+        varon = divid + 'on';
+        varoff = divid + 'off';
+
+        if(document.getElementById(varon).style.display == 'block')
+        {
+            document.getElementById(varon).style.display = 'none';
+            document.getElementById(varoff).style.display = 'block';
+        }
+
+        else
+        {
+            document.getElementById(varoff).style.display = 'none';
+            document.getElementById(varon).style.display = 'block'
+        }
+    }
+</script>
 </body>
 
 </html>

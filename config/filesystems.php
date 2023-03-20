@@ -35,6 +35,12 @@ return [
             'root' => storage_path('app'),
             'throw' => false,
         ],
+        'admin' => [
+            'driver' =>'local',
+            'root' => public_path('uploads'),
+            'visibility' =>'public',
+            'url' => env('APP_URL').'/uploads',
+        ],
 
         'public' => [
             'driver' => 'local',
@@ -55,10 +61,10 @@ return [
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
             'throw' => false,
         ],
-        'admin' => [
-            'driver' => 'local',
-            'root' => storage_path('app/admin'),
-        ],
+//        'admin' => [
+//            'driver' => 'local',
+//            'root' => storage_path('app/admin'),
+//        ],
 
 
     ],

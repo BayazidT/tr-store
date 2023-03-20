@@ -14,3 +14,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\PortfolioController::class, 'getPortfolio'])->name('portfolio');
+Route::patch('/about-update', [App\Http\Controllers\PortfolioController::class, 'update_about'])->name('about-update');

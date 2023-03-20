@@ -26,4 +26,10 @@ class PortfolioController extends Controller
         $data['project_category'] = $projectCategory;
         return view('index')->with($data);
     }
+
+    public function update_about(Request $request){
+        $data = $request->except('_token', '_method');
+        ProfileAbout::where('profile_id', $data['profile_id'])->update($data);
+        return redirect()->back()->with('msg','Information Updated');
+    }
 }

@@ -16,6 +16,7 @@ Route::group([
     $router->resource('/education-info', 'Portfolio\EducationInfoController');
     $router->resource('/experience-info', 'Portfolio\ExperienceInfoController');
     $router->resource('/skill-info', 'Portfolio\SkillInfoController');
+    $router->resource('/project-info', 'Portfolio\ProjectInfoController');
     $router->resource('/project-category', 'Portfolio\ProjectCategoryController');
 
 
